@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
+
+:root{
+    --black: #272829;
+    --dark-gray: #61677A;
+    --light-gray: #D8D9DA;
+    --beige: #FFF6E0;
+}
+
+html, body{
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: var(--dark-gray);
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
