@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 5rem;
+}
+
+.bloc {
+  display: flex;
+  flex-direction: column;
+}
