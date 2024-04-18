@@ -1,0 +1,7 @@
+footer {
+    font-family: 'Jersey 25', sans-serif;
+    background-color: var(--black);
+    color: var(--beige);
+    text-align: center;
+    margin-top: auto;
+}
