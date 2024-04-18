@@ -1,4 +1,5 @@
 import { Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
 import './index.css';
 
 export default function ProfileIcon(isConnected){
@@ -7,13 +8,13 @@ export default function ProfileIcon(isConnected){
         {
             key: '1',
             label: (
-                <a href='/profile'>My Profile</a>
+                <Link to={'/profile'}>My Profile</Link>
             ),
         },
         {
             key: '2',
             label: (
-                <a href='/logout'>Logout</a>
+                <Link to={'/logout'}>Logout</Link>
             ),
         }
     ]
