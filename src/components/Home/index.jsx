@@ -8,7 +8,7 @@ export default function Home() {
     const topGames = useTopGames();
 
     return (
-        <>
+        <div className="home-bg">
             <h1>Top Games</h1>
             <div className="top-games-container">
                 {topGames.map((game) => (
@@ -21,7 +21,7 @@ export default function Home() {
                     </Card>
                 ))}
             </div>
-        </>
+        </div>
     )
 
 }

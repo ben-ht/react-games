@@ -1,3 +1,7 @@
+.home-bg {
+    padding: 0 50px;
+}
+
 .top-games-container {
     display: flex;
     flex-direction: row;
@@ -7,10 +11,16 @@
     column-gap: 20px;
 }
 
+.ant-card-meta-title {
+    color: var(--primary) !important;
+}
+
 .ant-card-meta-description {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: var(--text) !important;
 }
+
