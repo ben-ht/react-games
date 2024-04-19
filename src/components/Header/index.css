@@ -11,3 +11,13 @@ header{
 header .ant-dropdown-trigger{
     margin-left: auto;
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 70px;
+    width: auto;
+}

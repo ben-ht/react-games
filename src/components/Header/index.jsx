@@ -7,7 +7,9 @@ export default function Header() {
     return (
         <header>
             <Link to={'/'}>
-            <div className='logo'>REACT GAMES</div>
+            <div className='logo'>
+                <img src="/src/assets/react-games-logo.svg" />
+            </div>
             </Link>
 
             <Navbar />
