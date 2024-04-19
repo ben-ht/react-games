@@ -1,18 +1,25 @@
-.profile-icon{
-    display: flex;
-    align-self: center;
+.profile-icon {
+  display: flex;
+  align-self: center;
+  cursor: pointer;
 }
 
-.profile-icon img{
-    filter: invert(94%) sepia(11%) saturate(1322%) hue-rotate(308deg) brightness(113%) contrast(101%);
+.signin {
+  cursor: pointer;
+  margin-left: auto;
 }
 
-ul.ant-dropdown-menu{
-    background-color: var(--beige) !important;
-    color: var(--black);
-    font-family: "Jersey 25", sans-serif;
+.profile-icon img {
+  filter: invert(94%) sepia(11%) saturate(1322%) hue-rotate(308deg)
+    brightness(113%) contrast(101%);
 }
 
-.ant-dropdown-menu-title-content{
-    font-size: 20px !important;
+ul.ant-dropdown-menu {
+  background-color: var(--beige) !important;
+  color: var(--black);
+  font-family: "Jersey 25", sans-serif;
+}
+
+.ant-dropdown-menu-title-content {
+  font-size: 20px !important;
 }

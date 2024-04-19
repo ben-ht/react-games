@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { loginUser } from "../../business/user";
+import useJwt from "../../hooks/useJwt";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -29,6 +31,9 @@ export default function Login() {
       setButton(true);
     }
   };
+
+  const { jwt, setJwt } = useJwt();
+
   return (
     <>
       <div className="form">
@@ -51,10 +56,21 @@ export default function Login() {
             onChange={handleInputChange}
           />
         </div>
-        <button disabled={button} type="submit" onClick={() => loginUser(user)}>
+        <button
+          disabled={button}
+          type="submit"
+          onClick={async () => {
+            let newJwt = await loginUser(user);
+            setJwt(newJwt);
+            localStorage.setItem("jwt", jwt);
+          }}
+        >
           Submit
         </button>
       </div>
+      <p>
+        You don't have an account yet ? <Link to={"/register"}>Register</Link>
+      </p>
     </>
   );
 }
