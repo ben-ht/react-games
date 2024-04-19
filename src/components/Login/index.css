@@ -1,5 +1,5 @@
 .signin {
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,6 +8,20 @@
     border-radius: 4px;
     box-shadow: 0 15px 35px rgba(0,0,0,9);
     color: var(--primary);
+}
+
+.login-form-bg {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(300deg,#92cbe7,#5d8bf3,#f35dc7);
+    background-size: 180% 180%;
+    animation: gradient-animation 40s ease infinite;
 }
 
 @keyframes gradient-animation {
@@ -22,26 +36,21 @@
   }
 }
 
-.main-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    height: 100%;
-    width: 100%;
-
-    background: linear-gradient(42deg,#10cf7c,#4e9bce,#c226dd,#eefcd0);
-    background-size: 240% 240%;
-    animation: gradient-animation 40s ease infinite;
-}
-
 .form{
     position: relative;
     width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.signin {
+  background-color: var(--background);
+}
+
+.signin h2 {
+  font-family: 'Poppins 300', sans-serif;
+  font-size: 45px;
 }
 
 .signin button {
@@ -60,7 +69,10 @@ padding: 10px;
 .input-group{
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
+}
+
+.input-group:not(:last-child){
+  margin-bottom: 20px;
 }
 
 .input-group input{

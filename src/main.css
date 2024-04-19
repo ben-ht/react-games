@@ -33,11 +33,13 @@ html, body{
 }
 
 .main-container{
-    padding: 10px 50px;
+    box-sizing: border-box;
+    height: calc(100vh - 181px) /* 100 header + 80 footer + 1 border header */;
 }
 
 h1 {
     color: var(--text);
+    font-weight: 600;
 }
 
 a { 

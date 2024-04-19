@@ -32,7 +32,7 @@ export default function Login() {
     }
   };
   return (
-    <>
+    <div className="login-form-bg">
       <div className="signin">
         <h2>Sign In</h2>
         <div className="form">
@@ -64,6 +64,6 @@ export default function Login() {
           Submit
         </button>
       </div>
-    </>
+    </div>
   );
 }
