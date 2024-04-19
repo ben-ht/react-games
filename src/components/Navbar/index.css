@@ -13,10 +13,10 @@ nav ul{
 
 nav ul li a{
     text-decoration: none;
-    color: var(--beige);
-    transition: filter 0.3s ease-in;
+    color: var(--text);
+    transition: color 0.3s ease-in;
 }
 
 nav ul li a:hover{
-    filter: brightness(1.2);
+    color: var(--accent);
 }
