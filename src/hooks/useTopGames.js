@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useTopGames() {
+    const [allGames, setAllGames] = useState([]);
     const [games, setGames] = useState([]);
 
     useEffect(() => {
@@ -13,10 +14,11 @@ export default function useTopGames() {
 
             const json = await res.json();
             setGames(json);
+            setAllGames(json);
         }
 
         getTopGames();
     }, []);
 
-    return games;
+    return { games, allGames, setGames };
 }

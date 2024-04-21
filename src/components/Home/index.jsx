@@ -1,25 +1,20 @@
 import "./index.css";
 import useTopGames from "../../hooks/useTopGames";
-import { Card } from "antd";
-
-const { Meta } = Card;
+import GameCard from "../GameCard";
+import SearchBar from "../SearchBar";
 
 export default function Home() {
-    const topGames = useTopGames();
+    const { games, allGames, setGames } = useTopGames();
 
     return (
         <div className="home-bg">
+            <SearchBar games={allGames} setGames={setGames}  />
             <h1>Top Games</h1>
             <div className="top-games-container">
-                {topGames.map((game) => (
-                    <Card
-                        hoverable
-                        style={{ width: 240 }}
-                        cover={<img alt="Game cover" src={""} />}
-                    >
-                        <Meta title={game.name} description={game.storyline} />
-                    </Card>
-                ))}
+                {games.length > 0 ? 
+                games.map((game) => (
+                    <GameCard key={game.id} game={game} />
+                )) : <h2>No games found</h2>}
             </div>
         </div>
     )
