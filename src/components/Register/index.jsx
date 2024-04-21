@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createUser } from "../../business/user";
 import "./index.css";
 import useJwt from "../../hooks/useJwt";
-
+import { useNavigate } from "react-router-dom/dist";
 export default function Register() {
   const [user, setUser] = useState({
     username: "",
@@ -13,6 +13,8 @@ export default function Register() {
   const { jwt, setJwt } = useJwt();
   const [button, setButton] = useState(true);
   const [isEqual, setIsEqual] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     event.preventDefault();
@@ -94,6 +96,9 @@ export default function Register() {
               setJwt(newJwt);
               console.log(jwt);
               localStorage.setItem("jwt", jwt);
+              if (newJwt) {
+                navigate("/");
+              }
             }}
           >
             Submit

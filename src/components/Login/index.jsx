@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../business/user";
 import useJwt from "../../hooks/useJwt";
-import { Link } from "react-router-dom";
 import "./index.css";
+import { useNavigate } from "react-router-dom/dist";
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -12,9 +12,12 @@ export default function Login() {
   });
 
   const [button, setButton] = useState(true);
+  const [unauthorized, setUnauthorized] = useState(false);
 
+  const navigate = useNavigate();
   const handleInputChange = (event) => {
     event.preventDefault();
+    setUnauthorized(false);
     const { name, value } = event.target;
     setUser((user) => {
       let newUser = {
@@ -50,7 +53,7 @@ export default function Login() {
               required
             />
             <i>Username</i>
-            </div>
+          </div>
           <div className="input-group">
             <input
               type="password"
@@ -69,17 +72,18 @@ export default function Login() {
           disabled={button}
           type="submit"
           onClick={async () => {
-            let newJwt = await loginUser(user);
+            let newJwt = await loginUser(user).catch(setUnauthorized(true));
             setJwt(newJwt);
             localStorage.setItem("jwt", jwt);
+            if (newJwt) {
+              navigate("/");
+            }
           }}
         >
           Submit
         </button>
+        {unauthorized ? <p>User or password must be false</p> : null}
       </div>
-      <p>
-        You don't have an account yet ? <Link to={"/register"}>Register</Link>
-      </p>
-    </>
+    </div>
   );
 }
