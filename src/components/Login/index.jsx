@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { loginUser } from "../../business/user";
 import useJwt from "../../hooks/useJwt";
 import { Link } from "react-router-dom";
+import "./index.css";
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -35,26 +37,33 @@ export default function Login() {
   const { jwt, setJwt } = useJwt();
 
   return (
-    <>
-      <div className="form">
-        <h1>Login component</h1>
-        <div className="bloc">
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={user.username}
-            onChange={handleInputChange}
-          />
+    <div className="login-form-bg">
+      <div className="signin">
+        <h2>Sign In</h2>
+        <div className="form">
+          <div className="input-group">
+            <input
+              type="text"
+              name="username"
+              value={user.username}
+              onChange={handleInputChange}
+              required
+            />
+            <i>Username</i>
+            </div>
+          <div className="input-group">
+            <input
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleInputChange}
+              required
+            />
+            <i>Password</i>
+          </div>
         </div>
-        <div className="bloc">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={user.password}
-            onChange={handleInputChange}
-          />
+        <div className="links">
+          <Link to="/register">Sign Up</Link>
         </div>
         <button
           disabled={button}

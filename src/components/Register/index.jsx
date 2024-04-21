@@ -52,7 +52,7 @@ export default function Register() {
   };
 
   return (
-    <>
+    <div className="login-form-bg">
       <div className="form">
         <h1>Register component</h1>
         {/* <form> */}
@@ -101,6 +101,6 @@ export default function Register() {
         </div>
         {/* </form> */}
       </div>
-    </>
+    </div>
   );
 }
