@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { createUser } from "../../business/user";
+import { Link } from "react-router-dom";
 import "./index.css";
 import useJwt from "../../hooks/useJwt";
 import { useNavigate } from "react-router-dom/dist";
+
 export default function Register() {
   const [user, setUser] = useState({
     username: "",
@@ -55,39 +57,45 @@ export default function Register() {
 
   return (
     <div className="login-form-bg">
-      <div className="form">
-        <h1>Register component</h1>
-        {/* <form> */}
-        <div className="inputPart">
-          <div className="bloc">
-            <label>Username</label>
+      <div className="signin">
+        <h2>Sign up</h2>
+        <div className="form">
+          <div className="input-group">
             <input
               type="text"
               name="username"
               value={user.username}
               onChange={handleInputChange}
+              required
             />
+            <i>Username</i>
           </div>
-          <div className="bloc">
-            <label>Password</label>
+          <div className="input-group">
             <input
               type="password"
               name="password"
               value={user.password}
               onChange={handleInputChange}
+              required
             />
+            <i>Password</i>
           </div>
-          <div className="bloc">
-            <label>Password confirmation</label>
+          <div className="input-group">
             <input
               type="password"
               name="confirmationPassword"
               value={user.confirmationPassword}
               onChange={handleInputChange}
+              required
             />
             {isEqual && user.confirmationPassword !== "" ? (
-              <p>Password and confirmation password must be the same</p>
-            ) : null}
+              <i>Must be the same as password</i>
+            ) : (
+              <i>Password confirmation</i>
+            )}
+          </div>
+          <div className="links">
+            <Link to="/login">Sign In</Link>
           </div>
           <button
             disabled={button}
@@ -104,7 +112,6 @@ export default function Register() {
             Submit
           </button>
         </div>
-        {/* </form> */}
       </div>
     </div>
   );
