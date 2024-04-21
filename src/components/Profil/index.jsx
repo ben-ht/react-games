@@ -4,7 +4,6 @@ import Meta from "antd/es/card/Meta";
 
 export default function Profil() {
   const { user } = useUser();
-  console.log(user.favorites);
   return (
     <div>
       <h1>Hello {user.name}</h1>
