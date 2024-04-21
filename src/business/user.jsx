@@ -1,5 +1,4 @@
 export async function createUser(user) {
-  console.log(JSON.stringify(user));
   const res = await fetch("https://m1.dysnomia.studio/api/Users/register", {
     mode: "cors",
     method: "post",
@@ -8,6 +7,8 @@ export async function createUser(user) {
   });
   if (!res.ok) {
     throw new Error(await res.text());
+  } else {
+    return await res.text();
   }
 }
 
@@ -20,5 +21,7 @@ export async function loginUser(user) {
   });
   if (!res.ok) {
     throw new Error(await res.text());
+  } else {
+    return await res.text();
   }
 }

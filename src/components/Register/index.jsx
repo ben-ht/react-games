@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createUser } from "../../business/user";
 import "./index.css";
+import useJwt from "../../hooks/useJwt";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -9,6 +10,7 @@ export default function Register() {
     confirmationPassword: "",
   });
 
+  const { jwt, setJwt } = useJwt();
   const [button, setButton] = useState(true);
   const [isEqual, setIsEqual] = useState(null);
 
@@ -22,7 +24,6 @@ export default function Register() {
       };
       disableButton(newUser);
       equalPassword(newUser);
-      console.log(newUser);
       return newUser;
     });
   };
@@ -86,7 +87,15 @@ export default function Register() {
               <p>Password and confirmation password must be the same</p>
             ) : null}
           </div>
-          <button disabled={button} onClick={() => createUser(user)}>
+          <button
+            disabled={button}
+            onClick={async () => {
+              let newJwt = await createUser(user);
+              setJwt(newJwt);
+              console.log(jwt);
+              localStorage.setItem("jwt", jwt);
+            }}
+          >
             Submit
           </button>
         </div>

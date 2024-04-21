@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../business/user";
+import useJwt from "../../hooks/useJwt";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 export default function Login() {
@@ -31,6 +33,9 @@ export default function Login() {
       setButton(true);
     }
   };
+
+  const { jwt, setJwt } = useJwt();
+
   return (
     <div className="login-form-bg">
       <div className="signin">
@@ -60,10 +65,21 @@ export default function Login() {
         <div className="links">
           <Link to="/register">Sign Up</Link>
         </div>
-        <button disabled={button} type="submit" onClick={() => loginUser(user)}>
+        <button
+          disabled={button}
+          type="submit"
+          onClick={async () => {
+            let newJwt = await loginUser(user);
+            setJwt(newJwt);
+            localStorage.setItem("jwt", jwt);
+          }}
+        >
           Submit
         </button>
       </div>
-    </div>
+      <p>
+        You don't have an account yet ? <Link to={"/register"}>Register</Link>
+      </p>
+    </>
   );
 }
