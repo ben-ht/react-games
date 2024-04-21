@@ -39,7 +39,7 @@ export default function ProfileIcon(isConnected) {
   }
 
   return (
-    <div className={"signin"}>
+    <div className={"signin-navbar"}>
       <Link to={"/login"}>Sign in</Link>
     </div>
   );
