@@ -4,16 +4,17 @@ import GameCard from "../GameCard";
 import SearchBar from "../SearchBar";
 
 export default function Home() {
-    const topGames = useTopGames();
+    const { games, allGames, setGames } = useTopGames();
 
     return (
         <div className="home-bg">
-            <SearchBar />
+            <SearchBar games={allGames} setGames={setGames}  />
             <h1>Top Games</h1>
             <div className="top-games-container">
-                {topGames.map((game) => (
-                    <GameCard game={game} />
-                ))}
+                {games.length > 0 ? 
+                games.map((game) => (
+                    <GameCard key={game.id} game={game} />
+                )) : <h2>No games found</h2>}
             </div>
         </div>
     )
