@@ -1,6 +1,7 @@
 import './index.css';
 import { useParams } from 'react-router-dom';
-import { Rate } from 'antd';
+import { Rate, Button } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import useGameScreenshots from '../../hooks/useGameScreenshots';
 import useGameDetails from '../../hooks/useGameDetails';
 import GameCarousel from '../GameCarousel';
@@ -13,9 +14,11 @@ export default function GameDetails() {
 
     return (
         <div className='game-details-bg'>
-            <div className="game-details-container">            
-                <h1>{game.name}</h1>
-
+            <div className="game-details-container">
+                <div className='game-details-title'>
+                    <h1>{game.name}</h1>
+                    <Button icon={<PlusOutlined />} size='large' title="Add to favorites"></Button>
+                </div>
                 <GameCarousel screenshots={screenshots} />
                 <div className='game-description'>
                     {game.storyline}

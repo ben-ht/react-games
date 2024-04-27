@@ -5,8 +5,8 @@ export default function Navbar() {
     return (
         <nav>
             <ul>
-                <li><Link to={'/'}>Home</Link></li>
-                <li><Link to={'/games'}>All games</Link></li>
+                <li><Link to={'/'}>All games</Link></li>
+                <li><Link to={'/profile'}>Favourites</Link></li>
             </ul>
         </nav>
     );

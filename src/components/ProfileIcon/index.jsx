@@ -13,10 +13,6 @@ export default function ProfileIcon(isConnected) {
   const items = [
     {
       key: "1",
-      label: <Link to={"/profile"}>My Profile</Link>,
-    },
-    {
-      key: "2",
       label: <Link onClick={logout}>Logout</Link>,
     },
   ];

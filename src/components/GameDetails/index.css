@@ -23,3 +23,15 @@
 .game-rating {
     text-align: center;
 }
+
+.game-details-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.game-rating-stars > span:last-child{
+    margin-left: 10px;
+}
