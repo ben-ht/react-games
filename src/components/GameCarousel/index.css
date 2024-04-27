@@ -1,11 +1,3 @@
-.game-details-container {
-    padding: 0 50px;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .game-screenshots-carousel {
     width: 800px;
 }

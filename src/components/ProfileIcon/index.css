@@ -1,8 +1,3 @@
-.profile-icon img {
-  filter: invert(94%) sepia(11%) saturate(1322%) hue-rotate(308deg)
-    brightness(113%) contrast(101%);
-}
-
 ul.ant-dropdown-menu {
   background-color: var(--beige) !important;
   color: var(--black);
