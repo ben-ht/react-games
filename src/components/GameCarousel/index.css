@@ -21,9 +21,16 @@
 .game-screenshot-preview-container {
     width: auto;
     height: 150px;
+    cursor: pointer;
 }
 
 .game-screenshot-preview-container img {
     height: 100%;
     object-fit: contain;
+    opacity: 1;
+    transition : opacity 0.3s ease-in;
+}
+
+.game-screenshot-preview-container img:hover {
+    opacity: 0.5;
 }

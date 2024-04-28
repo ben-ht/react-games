@@ -34,7 +34,7 @@ html, body{
 
 .main-container{
     box-sizing: border-box;
-    height: calc(100vh - 181px) /* 100 header + 80 footer + 1 border header */;
+    min-height: calc(100vh - 181px) /* 100 header + 80 footer + 1 border header */;
 }
 
 h1 {
