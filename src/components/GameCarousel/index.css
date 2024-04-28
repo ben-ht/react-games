@@ -1,0 +1,36 @@
+.game-screenshots-carousel {
+    width: 800px;
+}
+
+.game-screenshot-container img {
+    width: 800px;
+    height: auto;
+}
+
+.game-screenshots-previews {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    column-gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0;
+}
+
+.game-screenshot-preview-container {
+    width: auto;
+    height: 150px;
+    cursor: pointer;
+}
+
+.game-screenshot-preview-container img {
+    height: 100%;
+    object-fit: contain;
+    opacity: 1;
+    transition : opacity 0.3s ease-in;
+}
+
+.game-screenshot-preview-container img:hover {
+    opacity: 0.5;
+}

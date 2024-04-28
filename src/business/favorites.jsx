@@ -1,4 +1,4 @@
-export async function addFavorites(userToken, gameId) {
+export async function addToFavorites(userToken, gameId) {
   const res = await fetch(
     `https://m1.dysnomia.studio/api/Users/favorites/add/${gameId}`,
     {
@@ -13,12 +13,12 @@ export async function addFavorites(userToken, gameId) {
   );
   if (!res.ok) {
     throw new Error(await res.text());
-  } else {
-    return await res.text();
   }
+
+  return await res.text();
 }
 
-export async function removeFavorites(userToken, gameId) {
+export async function removeFromFavorites(userToken, gameId) {
   const res = await fetch(
     `https://m1.dysnomia.studio/api/Users/favorites/remove/${gameId}`,
     {
@@ -33,7 +33,7 @@ export async function removeFavorites(userToken, gameId) {
   );
   if (!res.ok) {
     throw new Error(await res.text());
-  } else {
-    return await res.text();
   }
+  
+  return await res.text();
 }

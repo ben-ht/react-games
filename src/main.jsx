@@ -7,11 +7,9 @@ import JwtContextProvider from "./context/JwtContext";
 import UserContextProvider from "./context/UserContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <JwtContextProvider>
       <UserContextProvider>
         <Router />
       </UserContextProvider>
     </JwtContextProvider>
-  </React.StrictMode>
 );
