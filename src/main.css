@@ -29,12 +29,12 @@ html, body{
 #root{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .main-container{
     box-sizing: border-box;
-    min-height: calc(100vh - 181px) /* 100 header + 80 footer + 1 border header */;
+    height: 100%;
 }
 
 h1 {

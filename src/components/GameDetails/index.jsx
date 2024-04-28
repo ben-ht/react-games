@@ -37,7 +37,7 @@ export default function GameDetails() {
                 </div>
                 <hr/>
                 <div className='game-details-extra'>
-                    <p><b>Release date:</b>&nbsp; {game.firstReleaseDate.substring(0, 10)}</p>
+                    <p><b>Release date:</b>&nbsp; {game.firstReleaseDate?.substring(0, 10)}</p>
                 </div>
             </div>
         </div>
