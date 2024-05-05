@@ -1,11 +1,15 @@
 import useUser from "../../hooks/useUser";
-import Card from "antd/es/card/Card";
-import Meta from "antd/es/card/Meta";
 import "./index.css";
 import GameCard from "../GameCard";
+import { useEffect } from "react";
 
 export default function Profil() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+  useEffect(() => {
+    if (user !== undefined) {
+      setUser(user);
+    }
+  }, [user, setUser]);
   return (
     <div>
       <h1>Hello {user.name}</h1>

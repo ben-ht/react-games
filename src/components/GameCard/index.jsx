@@ -1,6 +1,6 @@
 import { Card } from "antd";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { JwtContext } from "../../context/JwtContext";
 const { Meta } = Card;
 
@@ -9,7 +9,13 @@ import useUser from "../../hooks/useUser";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function GameCard({ game }) {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+
+  useEffect(() => {
+    if (user !== undefined) {
+      setUser(user);
+    }
+  }, [user, setUser]);
 
   return (
     <Link to={`/games/${game.id}`}>

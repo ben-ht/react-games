@@ -9,26 +9,29 @@ import GameDetails from "../GameDetails";
 import useJwt from "../../hooks/useJwt";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import useUser from "../../hooks/useUser";
 
 const PrivateRoute = ({ element, ...rest }) => {
   const navigate = useNavigate();
   const { jwt } = useJwt();
+  const { user } = useUser();
   useEffect(() => {
-    if (!jwt) {
+    if (!jwt && !user) {
       navigate("/login");
     }
-  }, [element, jwt, rest, navigate]);
+  }, [element, jwt, user, rest, navigate]);
   return element;
 };
 
 const LoggedRoute = ({ element, ...rest }) => {
   const navigate = useNavigate();
   const { jwt } = useJwt();
+  const { user } = useUser();
   useEffect(() => {
-    if (jwt) {
+    if (jwt && user) {
       navigate("/profile");
     }
-  }, [element, jwt, rest, navigate]);
+  }, [element, jwt, user, rest, navigate]);
   return element;
 };
 
