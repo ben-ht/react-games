@@ -24,15 +24,18 @@ export default function FavoriteButton({ game, isDetail }) {
     isFav();
   }, [user, game.id]);
 
-  const handleAddToFavorites = () => {
+  const handleAddToFavorites = (event) => {
+    event.preventDefault();
     setButton(true);
     addToFavorites(jwt, game.id);
   };
 
-  const handleRemoveFromFavorites = () => {
+  const handleRemoveFromFavorites = (event) => {
+    event.preventDefault();
     setButton(false);
     removeFromFavorites(jwt, game.id);
   };
+
   if (jwt) {
     return (
       <>
