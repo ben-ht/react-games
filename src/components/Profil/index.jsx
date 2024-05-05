@@ -1,15 +1,9 @@
 import useUser from "../../hooks/useUser";
 import "./index.css";
 import GameCard from "../GameCard";
-import { useEffect } from "react";
 
 export default function Profil() {
-  const { user, setUser } = useUser();
-  useEffect(() => {
-    if (user !== undefined) {
-      setUser(user);
-    }
-  }, [user, setUser]);
+  const { user } = useUser();
   return (
     <div>
       <h1>Hello {user.name}</h1>
