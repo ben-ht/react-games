@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom/dist';
 
 export default function Profil() {
 	const { user, setUser } = useUser();
-
 	const { jwt, setJwt } = useJwt();
 
 	const navigate = useNavigate();
@@ -28,17 +27,20 @@ export default function Profil() {
 
 	return (
 		<div>
-			<h1>Hello {user?.name}</h1>
-			<Popconfirm
-				title="Delete the task"
-				description="Are you sure to delete your account?"
-				onConfirm={confirm}
-				onCancel={cancel}
-				okText="Yes"
-				cancelText="No"
-			>
-				<Button danger>Delete</Button>
-			</Popconfirm>
+			<div className="title-part">
+				<h1>Hello {user?.name}</h1>
+				<Popconfirm
+					title="Delete you account ?"
+					description="Are you sure to delete your account?"
+					onConfirm={confirm}
+					onCancel={cancel}
+					okText="Yes"
+					cancelText="No"
+					className="button-delete"
+				>
+					<Button danger>Delete</Button>
+				</Popconfirm>
+			</div>
 			<h2>Here is your favorites games list</h2>
 			<div className="top-games-container">
 				{user?.favorites && user?.favorites.length !== 0 ? (
