@@ -5,7 +5,7 @@ import useGameDetails from '../../hooks/useGameDetails';
 import GameCarousel from '../GameCarousel';
 import GameRating from '../GameRating';
 import useUser from '../../hooks/useUser';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import FavoriteButton from '../FavoriteButton';
 
 export default function GameDetails() {
 	const id = useParams();
