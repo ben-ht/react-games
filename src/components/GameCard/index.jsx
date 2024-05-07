@@ -6,7 +6,7 @@ const { Meta } = Card;
 
 import './index.css';
 import useUser from '../../hooks/useUser';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import FavoriteButton from '../FavoriteButton';
 
 export default function GameCard({ game }) {
 	const { user, setUser } = useUser();
