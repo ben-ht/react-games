@@ -1,9 +1,9 @@
 footer {
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--text);
-    margin-top: auto;
+	height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: var(--text);
+	margin-top: auto;
 }
