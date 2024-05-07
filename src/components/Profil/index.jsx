@@ -15,7 +15,6 @@ export default function Profil() {
 
 	const confirm = async (e) => {
 		e.preventDefault();
-		console.log('ouais');
 		message.success('User deleted');
 		await deleteUser(jwt);
 		localStorage.removeItem('jwt');
