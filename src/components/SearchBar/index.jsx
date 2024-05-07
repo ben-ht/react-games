@@ -1,12 +1,8 @@
 import './index.css';
-import PropTypes from 'prop-types';
-export default function SearchBar({ games, setGames }) {
-	function handleInput(query) {
-		let filteredGames = games.filter((game) =>
-			game.name.toLowerCase().includes(query.toLowerCase()),
-		);
-		setGames(filteredGames);
-	}
+import useAllGames from '../../hooks/useAllGames';
+
+export default function SearchBar({ filteredGames, setFilteredGames }) {
+	function handleInput(query) {}
 
 	return (
 		<div className="search-bar-container">

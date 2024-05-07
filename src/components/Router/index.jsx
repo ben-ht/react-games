@@ -9,6 +9,7 @@ import GameDetails from '../GameDetails';
 import useJwt from '../../hooks/useJwt';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import AllGames from '../AllGames';
 
 const PrivateRoute = ({ element, ...rest }) => {
 	const navigate = useNavigate();
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+			},
+			{
+				path: '/games',
+				element: <AllGames />,
 			},
 			{
 				path: '/login',
