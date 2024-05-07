@@ -1,6 +1,5 @@
 import { Card } from 'antd';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
 import useGameCover from '../../hooks/useGameCover';
 const { Meta } = Card;
 
@@ -18,7 +17,9 @@ export default function GameCard({ game }) {
 			<Card
 				hoverable
 				style={{ width: 400 }}
-				cover={<img src={gameCover[0]?.url} />}
+				cover={
+					<img src={gameCover[0]?.url} alt={game.name + ' cover'} />
+				}
 			>
 				<Meta title={game.name} description={game.storyline} />
 				<FavoriteButton game={game} user={user} isDetail={false} />

@@ -41,19 +41,21 @@ export default function FavoriteButton({ game, isDetail }) {
 			<>
 				{button ? (
 					<Button
-						className="game-card-button"
 						onClick={handleRemoveFromFavorites}
 						icon={<MinusOutlined />}
+						title={isDetail ? 'Remove from favorites' : null}
+						size={isDetail ? 'large' : 'middle'}
 					>
 						{isDetail ? null : 'Remove from favorites'}
 					</Button>
 				) : (
 					<Button
-						className="game-card-button"
 						onClick={handleAddToFavorites}
 						icon={<PlusOutlined />}
+						title={isDetail ? 'Add to favorites' : null}
+						size={isDetail ? 'large' : 'middle'}
 					>
-						{isDetail ? null : 'Add favorites'}
+						{isDetail ? null : 'Add to favorites'}
 					</Button>
 				)}
 			</>

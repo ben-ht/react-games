@@ -84,7 +84,7 @@ export default function Login() {
 				>
 					Submit
 				</button>
-				{unauthorized ? <p>User or password must be false</p> : null}
+				{unauthorized ? <p>User or password is incorrect</p> : null}
 			</div>
 		</div>
 	);
