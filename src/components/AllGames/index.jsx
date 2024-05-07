@@ -1,17 +1,19 @@
 import './index.css';
-import useTopGames from '../../hooks/useTopGames';
 import GameCard from '../GameCard';
 import SearchBar from '../SearchBar';
+import useTopGames from '../../hooks/useTopGames';
+import { useState } from 'react';
 
-export default function Home() {
+export default function AllGames() {
 	const games = useTopGames({
-		pageSize: 10,
+		pageSize: 25,
 		page: 1,
 	});
 
 	return (
 		<div className="home-bg">
-			<h1>Top Games</h1>
+			<SearchBar games={''} setFilteredGames={''} />
+			<h1>All Games</h1>
 			<div className="top-games-container">
 				{games.length > 0 ? (
 					games.map((game) => <GameCard key={game.id} game={game} />)
