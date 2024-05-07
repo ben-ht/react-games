@@ -20,7 +20,7 @@ export default function JwtContextProvider({ children }) {
 					setJwt(newToken);
 					localStorage.setItem('jwt', newToken);
 				}
-			}, 50000);
+			}, 300000);
 			return () => clearInterval(id);
 		} else if (!jwt && j) {
 			setJwt(j);

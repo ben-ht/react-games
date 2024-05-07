@@ -18,7 +18,7 @@ export default function useGameScreenshots({ id }) {
 		}
 
 		getGameScreenshots();
-	}, []);
+	}, [id]);
 
 	return screenshots;
 }
