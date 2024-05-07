@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { createUser } from '../../business/user';
 import { Link } from 'react-router-dom';
-import './index.css';
 import useJwt from '../../hooks/useJwt';
 import { useNavigate } from 'react-router-dom/dist';
 
