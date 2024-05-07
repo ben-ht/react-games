@@ -20,7 +20,6 @@ export default function JwtContextProvider({ children }) {
 				if (timestamp > dateNow) {
 					localStorage.removeItem('jwt');
 					let newToken = await renewToken(jwt);
-					console.log(newToken);
 					setJwt(newToken);
 					localStorage.setItem('jwt', newToken);
 				}
