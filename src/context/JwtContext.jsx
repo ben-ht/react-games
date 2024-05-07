@@ -3,7 +3,11 @@ import { useState, createContext, useEffect } from 'react';
 export const JwtContext = createContext();
 
 export default function JwtContextProvider({ children }) {
-	let [jwt, setJwt] = useState();
+	let [jwt, setJwt] = useState(
+		localStorage.getItem('jwt')
+			? localStorage.getItem('jwt')
+			: localStorage.removeItem('jwt'),
+	);
 
 	useEffect(() => {
 		let j = localStorage.getItem('jwt');

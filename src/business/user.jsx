@@ -23,3 +23,19 @@ export async function loginUser(user) {
 	}
 	return await res.text();
 }
+
+export async function deleteUser(userToken) {
+	const res = await fetch('https://m1.dysnomia.studio/api/Users', {
+		mode: 'cors',
+		method: 'delete',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${userToken}`,
+		},
+	});
+	if (!res.ok) {
+		throw new Error(await res.text());
+	}
+
+	return await res.text();
+}
