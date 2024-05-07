@@ -13,12 +13,14 @@ export default function Profil() {
 
 	const navigate = useNavigate();
 
-	const confirm = async () => {
+	const confirm = async (e) => {
+		e.preventDefault();
+		console.log('ouais');
 		message.success('User deleted');
 		await deleteUser(jwt);
 		localStorage.removeItem('jwt');
-		await setUser(null);
-		await setJwt(null);
+		await setUser();
+		await setJwt();
 		await navigate('/');
 	};
 	const cancel = () => {
