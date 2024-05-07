@@ -7,9 +7,8 @@ export async function createUser(user) {
   });
   if (!res.ok) {
     throw new Error(await res.text());
-  } else {
-    return await res.text();
   }
+  return await res.text();
 }
 
 export async function loginUser(user) {
@@ -21,7 +20,6 @@ export async function loginUser(user) {
   });
   if (!res.ok) {
     throw new Error(await res.text());
-  } else {
-    return await res.text();
   }
+  return await res.text();
 }
