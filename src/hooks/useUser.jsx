@@ -18,7 +18,7 @@ export default function useUser() {
 			if (!res.ok) {
 				throw new Error(await res.text());
 			}
-			const response = await res.json();
+			const response = await res.text();
 			setUser(response);
 		}
 		if (jwt !== undefined) {
