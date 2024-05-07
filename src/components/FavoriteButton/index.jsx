@@ -9,7 +9,7 @@ import './index.css';
 export default function FavoriteButton({ game, isDetail }) {
 	const [button, setButton] = useState(false);
 	const { jwt } = useJwt();
-	const { user } = useUser();
+	const { user, setUser } = useUser();
 
 	useEffect(() => {
 		const favoritesIds = [];
@@ -34,6 +34,16 @@ export default function FavoriteButton({ game, isDetail }) {
 		event.preventDefault();
 		setButton(false);
 		removeFromFavorites(jwt, game.id);
+		setInterval(() => {
+			const newList = user.favorites.map((gametarget, i = 0) => {
+				const newList = user.favorites.filter(
+					(favorite) => favorite.id !== game.id,
+				);
+
+				setUser({ ...user, favorites: newList });
+			});
+			setUser(newList);
+		}, 2000);
 	};
 
 	if (jwt) {

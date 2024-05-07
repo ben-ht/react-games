@@ -2,6 +2,22 @@
 	padding: 0 50px;
 }
 
+.title-part {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.title-part h1 {
+	width: 100%;
+}
+
+.title-part .button-delete {
+	background-color: red;
+	color: white;
+	margin-right: 2%;
+}
+
 .top-games-container {
 	display: flex;
 	flex-direction: row;
