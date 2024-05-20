@@ -4,8 +4,8 @@ import useGameScreenshots from '../../hooks/useGameScreenshots';
 import useGameDetails from '../../hooks/useGameDetails';
 import GameCarousel from '../GameCarousel';
 import GameRating from '../GameRating';
-import useUser from '../../hooks/useUser';
 import FavoriteButton from '../FavoriteButton';
+import GamePlateforms from '../GamePlatforms';
 
 export default function GameDetails() {
 	const id = useParams();
@@ -13,6 +13,8 @@ export default function GameDetails() {
 	const game = useGameDetails(id);
 	const aggregatedRating = (game.aggregatedRating / 20).toFixed(2);
 	const playerRating = (game.rating / 20).toFixed(2);
+
+	console.log(game.platformsDetail);
 
 	return (
 		<div className="game-details-bg">
@@ -36,6 +38,7 @@ export default function GameDetails() {
 						ratingCount={game.ratingCount}
 					/>
 				</div>
+				<GamePlateforms plateforms={game.platformsDetail} />
 				<hr />
 				<div className="game-details-extra">
 					<p>
