@@ -2,7 +2,6 @@ import { Table } from 'antd';
 import './index.css';
 
 export default function GamePlateforms({ plateforms }) {
-	console.log(plateforms);
 	const columns = [
 		{
 			title: 'Platforms available',

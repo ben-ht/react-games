@@ -14,8 +14,6 @@ export default function GameDetails() {
 	const aggregatedRating = (game.aggregatedRating / 20).toFixed(2);
 	const playerRating = (game.rating / 20).toFixed(2);
 
-	console.log(game.platformsDetail);
-
 	return (
 		<div className="game-details-bg">
 			<div className="game-details-container">
