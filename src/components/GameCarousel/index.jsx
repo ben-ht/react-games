@@ -41,5 +41,5 @@ export default function GameCarousel({ screenshots }) {
 }
 
 GameCarousel.propTypes = {
-	screenshots: PropTypes.number.isRequired,
+	screenshots: PropTypes.array.isRequired,
 };
