@@ -8,7 +8,7 @@ import useUser from '../../hooks/useUser';
 import FavoriteButton from '../FavoriteButton';
 
 export default function GameCard({ game }) {
-	const { user, setUser } = useUser();
+	const { user } = useUser();
 
 	const gameCover = useGameCover({ id: game.id });
 

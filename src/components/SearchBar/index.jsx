@@ -1,7 +1,5 @@
 import './index.css';
 
-import { useState } from 'react';
-
 export default function SearchBar({ games, setGames }) {
 	function handleInput(query) {
 		let filteredGames = games.filter((game) =>
