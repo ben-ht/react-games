@@ -1,4 +1,5 @@
 import './index.css';
+import View from './view';
 import { useParams } from 'react-router-dom';
 import useGameScreenshots from '../../hooks/useGameScreenshots';
 import useGameDetails from '../../hooks/useGameDetails';

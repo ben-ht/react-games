@@ -20,26 +20,13 @@ export default function ProfileIcon(isConnected) {
 		},
 	];
 
-	if (jwt) {
-		isConnected = true;
-	} else {
-		false;
-	}
-	if (isConnected) {
-		return (
-			<Dropdown menu={{ items }} style={{ width: 'max-content' }}>
-				<a onClick={(e) => e.preventDefault()}>
-					<div className="profile-icon">
-						<img src="/src/assets/user-icon.svg" />
-					</div>
-				</a>
-			</Dropdown>
-		);
-	}
+  const { jwt, setJwt } = useJwt();
 
-	return (
-		<div className={'signin-navbar'}>
-			<Link to={'/login'}>Sign in</Link>
-		</div>
-	);
+  if (jwt) {
+    isConnected = true;
+  }
+
+  return (
+    <View isConnected={[isConnected, setJwt]} />
+  );
 }
