@@ -77,6 +77,6 @@ export default function FavoriteButton({ game, isDetail }) {
 }
 
 FavoriteButton.propTypes = {
-	game: PropTypes.object,
-	isDetail: PropTypes.bool,
+	game: PropTypes.object.isRequired,
+	isDetail: PropTypes.bool.isRequired,
 };

@@ -56,5 +56,5 @@ async function renewToken(jwt) {
 }
 
 JwtContextProvider.propTypes = {
-	children: PropTypes.string,
+	children: PropTypes.object.isRequired,
 };

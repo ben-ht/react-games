@@ -15,8 +15,8 @@ export default function GameDetailTable({ data, title, uniqueKey, dataIndex }) {
 }
 
 GameDetailTable.propTypes = {
-	data: PropTypes.string,
-	title: PropTypes.string,
-	uniqueKey: PropTypes.string,
-	dataIndex: PropTypes.string,
+	data: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	uniqueKey: PropTypes.string.isRequired,
+	dataIndex: PropTypes.string.isRequired,
 };

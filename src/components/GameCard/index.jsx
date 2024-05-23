@@ -30,5 +30,5 @@ export default function GameCard({ game }) {
 }
 
 GameCard.propTypes = {
-	game: PropTypes.object,
+	game: PropTypes.object.isRequired,
 };
