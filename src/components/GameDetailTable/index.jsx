@@ -1,5 +1,6 @@
 import { Table } from 'antd';
 import './index.css';
+import PropTypes from 'prop-types';
 
 export default function GameDetailTable({ data, title, uniqueKey, dataIndex }) {
 	const columns = [
@@ -12,3 +13,10 @@ export default function GameDetailTable({ data, title, uniqueKey, dataIndex }) {
 	];
 	return <Table dataSource={data} columns={columns} rowKey={uniqueKey} />;
 }
+
+GameDetailTable.propTypes = {
+	data: PropTypes.string,
+	title: PropTypes.string,
+	uniqueKey: PropTypes.string,
+	dataIndex: PropTypes.string,
+};

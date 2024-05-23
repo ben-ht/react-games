@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const JwtContext = createContext();
 
@@ -53,3 +54,7 @@ async function renewToken(jwt) {
 		return await res.text();
 	}
 }
+
+JwtContextProvider.propTypes = {
+	children: PropTypes.string,
+};

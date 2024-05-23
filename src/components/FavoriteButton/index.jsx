@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import useJwt from '../../hooks/useJwt';
 import './index.css';
+import PropTypes from 'prop-types';
 
 export default function FavoriteButton({ game, isDetail }) {
 	const [button, setButton] = useState(false);
@@ -74,3 +75,8 @@ export default function FavoriteButton({ game, isDetail }) {
 		);
 	}
 }
+
+FavoriteButton.propTypes = {
+	game: PropTypes.object,
+	isDetail: PropTypes.bool,
+};

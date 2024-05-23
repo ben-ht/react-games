@@ -2,6 +2,7 @@ import { Card } from 'antd';
 import { Link } from 'react-router-dom';
 import useGameCover from '../../hooks/useGameCover';
 const { Meta } = Card;
+import PropTypes from 'prop-types';
 
 import './index.css';
 import useUser from '../../hooks/useUser';
@@ -27,3 +28,7 @@ export default function GameCard({ game }) {
 		</Link>
 	);
 }
+
+GameCard.propTypes = {
+	game: PropTypes.object,
+};

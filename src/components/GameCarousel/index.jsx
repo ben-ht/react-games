@@ -1,8 +1,10 @@
 import './index.css';
 import { useRef, useState } from 'react';
 import { Carousel } from 'antd';
+import PropTypes from 'prop-types';
 
 export default function GameCarousel({ screenshots }) {
+	// eslint-disable-next-line no-unused-vars
 	const [activeThumbnail, setActiveThumbnail] = useState(0);
 
 	const slider = useRef();
@@ -37,3 +39,7 @@ export default function GameCarousel({ screenshots }) {
 		</div>
 	);
 }
+
+GameCarousel.propTypes = {
+	screenshots: PropTypes.number,
+};
