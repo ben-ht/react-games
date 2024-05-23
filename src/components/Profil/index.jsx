@@ -45,7 +45,7 @@ export default function Profil() {
 			<div className="top-games-container">
 				{user?.favorites && user?.favorites.length !== 0 ? (
 					user?.favorites.map((game) => (
-						<GameCard key={game.id} game={game} />
+						<GameCard key={game?.id} game={game} />
 					))
 				) : (
 					<p>No game add to favorite</p>

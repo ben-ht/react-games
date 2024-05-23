@@ -1,7 +1,5 @@
 import './index.css';
-
-import { useState } from 'react';
-
+import PropTypes from 'prop-types';
 export default function SearchBar({ games, setGames }) {
 	function handleInput(query) {
 		let filteredGames = games.filter((game) =>
@@ -25,3 +23,8 @@ export default function SearchBar({ games, setGames }) {
 		</div>
 	);
 }
+
+SearchBar.propTypes = {
+	games: PropTypes.array.isRequired,
+	setGames: PropTypes.func.isRequired,
+};

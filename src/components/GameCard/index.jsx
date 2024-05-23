@@ -2,13 +2,14 @@ import { Card } from 'antd';
 import { Link } from 'react-router-dom';
 import useGameCover from '../../hooks/useGameCover';
 const { Meta } = Card;
+import PropTypes from 'prop-types';
 
 import './index.css';
 import useUser from '../../hooks/useUser';
 import FavoriteButton from '../FavoriteButton';
 
 export default function GameCard({ game }) {
-	const { user, setUser } = useUser();
+	const { user } = useUser();
 
 	const gameCover = useGameCover({ id: game.id });
 
@@ -27,3 +28,7 @@ export default function GameCard({ game }) {
 		</Link>
 	);
 }
+
+GameCard.propTypes = {
+	game: PropTypes.object.isRequired,
+};

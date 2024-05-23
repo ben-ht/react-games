@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const JwtContext = createContext();
 
@@ -20,7 +21,6 @@ export default function JwtContextProvider({ children }) {
 				if (timestamp > dateNow) {
 					localStorage.removeItem('jwt');
 					let newToken = await renewToken(jwt);
-					console.log(newToken);
 					setJwt(newToken);
 					localStorage.setItem('jwt', newToken);
 				}
@@ -54,3 +54,7 @@ async function renewToken(jwt) {
 		return await res.text();
 	}
 }
+
+JwtContextProvider.propTypes = {
+	children: PropTypes.object.isRequired,
+};

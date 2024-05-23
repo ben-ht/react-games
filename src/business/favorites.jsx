@@ -35,5 +35,5 @@ export async function removeFromFavorites(userToken, gameId) {
 		throw new Error(await res.text());
 	}
 
-	return await res.text();
+	return await res.json();
 }
