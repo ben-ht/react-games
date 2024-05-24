@@ -101,7 +101,6 @@ export default function Register() {
 						onClick={async () => {
 							let newJwt = await createUser(user);
 							setJwt(newJwt);
-							console.log(jwt);
 							localStorage.setItem('jwt', jwt);
 							if (newJwt) {
 								navigate('/');

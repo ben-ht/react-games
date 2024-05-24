@@ -1,5 +1,6 @@
 import './index.css';
 import { Rate } from 'antd';
+import PropTypes from 'prop-types';
 
 export default function GameRating({ title, rating, ratingCount }) {
 	return (
@@ -13,3 +14,9 @@ export default function GameRating({ title, rating, ratingCount }) {
 		</div>
 	);
 }
+
+GameRating.propTypes = {
+	title: PropTypes.string.isRequired,
+	rating: PropTypes.number,
+	ratingCount: PropTypes.number,
+};

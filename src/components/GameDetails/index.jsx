@@ -4,16 +4,42 @@ import useGameScreenshots from '../../hooks/useGameScreenshots';
 import useGameDetails from '../../hooks/useGameDetails';
 import GameCarousel from '../GameCarousel';
 import GameRating from '../GameRating';
-import useUser from '../../hooks/useUser';
 import FavoriteButton from '../FavoriteButton';
+import GameDetailTable from '../GameDetailTable';
+import { useEffect, useState } from 'react';
+import { getCompanie } from '../../business/companies';
+import useJwt from '../../hooks/useJwt';
 
 export default function GameDetails() {
+	const { jwt } = useJwt();
+
 	const id = useParams();
 	const screenshots = useGameScreenshots(id);
 	const game = useGameDetails(id);
-	const aggregatedRating = (game.aggregatedRating / 20).toFixed(2);
-	const playerRating = (game.rating / 20).toFixed(2);
 
+	const aggregatedRating = Number((game.aggregatedRating / 20).toFixed(2));
+	const playerRating = Number((game.rating / 20).toFixed(2));
+
+	const [gameCompanies, setGameCompanies] = useState([]);
+	useEffect(() => {
+		if (!game) {
+			return;
+		}
+
+		async function getData() {
+			const compArray = [];
+			if (Array.isArray(game.involvedCompanies?.ids)) {
+				await Promise.allSettled(
+					game.involvedCompanies?.ids.map(async (companie) => {
+						const res = await getCompanie(jwt, companie);
+						compArray.push(JSON.parse(res));
+					}),
+				);
+				setGameCompanies(compArray);
+			}
+		}
+		getData();
+	}, [jwt, game.involvedCompanies, game]);
 	return (
 		<div className="game-details-bg">
 			<div className="game-details-container">
@@ -34,6 +60,21 @@ export default function GameDetails() {
 						title="Players Rating"
 						rating={playerRating}
 						ratingCount={game.ratingCount}
+					/>
+				</div>
+				<br />
+				<div className="game-ratings">
+					<GameDetailTable
+						data={game?.platformsDetail}
+						title={'Plateforms avalaible'}
+						dataIndex={'name'}
+						uniqueKey={'id'}
+					/>
+					<GameDetailTable
+						data={gameCompanies}
+						title={'Involed companies'}
+						dataIndex={'name'}
+						uniqueKey={'id'}
 					/>
 				</div>
 				<hr />

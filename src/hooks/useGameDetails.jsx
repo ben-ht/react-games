@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import useJwt from './useJwt';
+import { postPlatforms } from '../business/platforms';
 
 export default function useGameDetails({ id }) {
 	const [gameDetails, setGameDetails] = useState([]);
@@ -22,6 +23,8 @@ export default function useGameDetails({ id }) {
 			}
 
 			const json = await res.json();
+			let pf = await postPlatforms(jwt, json.platforms.ids);
+			json.platformsDetail = pf;
 			setGameDetails(json);
 		}
 		if (jwt !== undefined) {
