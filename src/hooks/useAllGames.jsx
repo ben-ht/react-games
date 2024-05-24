@@ -6,6 +6,10 @@ export default function useAllGames({ pageSize, page, term }) {
 	const { jwt } = useJwt();
 
 	useEffect(() => {
+		if(term.length === 0){
+			return;
+		}
+
 		async function getAllGames() {
 			const res = await fetch(
 				`https://m1.dysnomia.studio/api/Games/search?pageSize=${pageSize}&page=${page}&term=${term}`,
@@ -26,7 +30,7 @@ export default function useAllGames({ pageSize, page, term }) {
 		}
 
 		getAllGames();
-	}, [pageSize, page]);
+	}, [pageSize, page, term]);
 
 	return { allGames, setAllGames };
 }
