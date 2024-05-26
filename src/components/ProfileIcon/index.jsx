@@ -7,7 +7,7 @@ export default function ProfileIcon(isConnected) {
 	isConnected = false;
 	const { jwt, setJwt } = useJwt();
 	const logout = () => {
-		setJwt(undefined);
+		setJwt();
 		localStorage.removeItem('jwt');
 	};
 	const items = [
