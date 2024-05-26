@@ -11,12 +11,14 @@ import { getCompanie } from '../../business/companies';
 import useJwt from '../../hooks/useJwt';
 
 export default function GameDetails() {
+	const { jwt } = useJwt();
+
 	const id = useParams();
 	const screenshots = useGameScreenshots(id);
 	const game = useGameDetails(id);
-	const aggregatedRating = (game.aggregatedRating / 20).toFixed(2);
-	const playerRating = (game.rating / 20).toFixed(2);
-	const { jwt } = useJwt();
+
+	const aggregatedRating = Number((game.aggregatedRating / 20).toFixed(2));
+	const playerRating = Number((game.rating / 20).toFixed(2));
 
 	const [gameCompanies, setGameCompanies] = useState([]);
 	useEffect(() => {

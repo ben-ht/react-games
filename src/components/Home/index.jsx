@@ -4,11 +4,13 @@ import GameCard from '../GameCard';
 import SearchBar from '../SearchBar';
 
 export default function Home() {
-	const { games, allGames, setGames } = useTopGames();
+	const games = useTopGames({
+		pageSize: 10,
+		page: 1,
+	});
 
 	return (
 		<div className="home-bg">
-			<SearchBar games={allGames} setGames={setGames} />
 			<h1>Top Games</h1>
 			<div className="top-games-container">
 				{games.length > 0 ? (

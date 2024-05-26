@@ -1,11 +1,43 @@
 import './index.css';
+import useAllGames from '../../hooks/useAllGames';
+import useTopGames from '../../hooks/useTopGames';
 import PropTypes from 'prop-types';
-export default function SearchBar({ games, setGames }) {
-	function handleInput(query) {
-		let filteredGames = games.filter((game) =>
-			game.name.toLowerCase().includes(query.toLowerCase()),
-		);
-		setGames(filteredGames);
+import { useEffect, useState } from 'react';
+
+export default function SearchBar({ setGames, setLoading }) {
+	const [query, setQuery] = useState('');
+	const [searchTerm, setSearchTerm] = useState('');
+
+	const { allGames } = useAllGames({
+		pageSize: 25,
+		page: 1,
+		term: searchTerm,
+	});
+
+	const topGames = useTopGames({
+		pageSize: 25,
+		page: 1,
+	});
+
+	useEffect(() => {
+		if (query.length > 0) {
+			setGames(allGames);
+			setLoading(false);
+		} else {
+			setGames(topGames);
+			setLoading(false);
+		}
+	}, [searchTerm, topGames, allGames]);
+
+	async function handleSearch() {
+		setLoading(true);
+		setSearchTerm(query);
+	}
+
+	function handleKeyDown(e) {
+		if (e.key === 'Enter') {
+			handleSearch();
+		}
 	}
 
 	return (
@@ -13,9 +45,14 @@ export default function SearchBar({ games, setGames }) {
 			<input
 				type="text"
 				placeholder="Search for a game..."
-				onInput={(e) => handleInput(e.target.value)}
+				onInput={(e) => setQuery(e.target.value)}
+				onKeyDown={handleKeyDown}
 			/>
-			<button type="button" className="search-bar-button">
+			<button
+				type="button"
+				className="search-bar-button"
+				onClick={handleSearch}
+			>
 				<i>
 					<img src="/src/assets/search-icon.png" />
 				</i>
@@ -25,6 +62,6 @@ export default function SearchBar({ games, setGames }) {
 }
 
 SearchBar.propTypes = {
-	games: PropTypes.array.isRequired,
 	setGames: PropTypes.func.isRequired,
+	setLoading: PropTypes.func.isRequired,
 };

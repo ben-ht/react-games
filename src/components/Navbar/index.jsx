@@ -6,10 +6,13 @@ export default function Navbar() {
 		<nav>
 			<ul>
 				<li>
-					<Link to={'/'}>All games</Link>
+					<Link to={'/'}>Home</Link>
 				</li>
 				<li>
-					<Link to={'/profile'}>Favourites</Link>
+					<Link to={'/games'}>All games</Link>
+				</li>
+				<li>
+					<Link to={'/profile'}>Profile</Link>
 				</li>
 			</ul>
 		</nav>

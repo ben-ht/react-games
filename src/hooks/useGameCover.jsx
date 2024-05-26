@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 
 export default function useGameCover({ id }) {
 	const [gameCover, setGameCover] = useState([]);
+	const [loading, setLoading] = useState(null);
 
 	useEffect(() => {
 		async function getGameCover() {
+			setLoading(true);
 			const res = await fetch(
 				`https://m1.dysnomia.studio/api/Games/covers/${id}`,
 			);
@@ -13,12 +15,15 @@ export default function useGameCover({ id }) {
 				throw new Error(await res.text());
 			}
 
-			const json = await res.json();
-			setGameCover(json);
+			if (res.status === 200) {
+				const json = await res.json();
+				setGameCover(json);
+			}
+			setLoading(false);
 		}
 
 		getGameCover();
 	}, [id]);
 
-	return gameCover;
+	return { gameCover, loading };
 }
