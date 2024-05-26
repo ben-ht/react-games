@@ -10,10 +10,6 @@ export default function AllGames() {
 
 	return (
 		<div className="home-bg">
-			<script
-				src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-				type="module"
-			></script>
 			<SearchBar setGames={setGames} setLoading={setLoading} />
 			<h1>All Games</h1>
 			<div className="top-games-container">
