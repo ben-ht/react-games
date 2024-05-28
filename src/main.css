@@ -42,3 +42,7 @@ a {
 	text-decoration: none;
 	color: var(--text);
 }
+
+.error-text {
+	color: rgb(200, 0, 0);
+}
