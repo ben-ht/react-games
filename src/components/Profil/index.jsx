@@ -2,6 +2,7 @@ import useUser from '../../hooks/useUser';
 import './index.css';
 import GameCard from '../GameCard';
 import { Popconfirm, Button, message } from 'antd';
+import { WarningOutlined } from '@ant-design/icons';
 import { deleteUser } from '../../business/user';
 import useJwt from '../../hooks/useJwt';
 import { useNavigate } from 'react-router-dom/dist';
@@ -21,34 +22,32 @@ export default function Profil() {
 		await setJwt();
 		await navigate('/');
 	};
-	const cancel = () => {
-		message.error('User not deleted');
-	};
 
 	return (
-		<div>
+		<div className="profile-container">
 			<div className="title-part">
-				<h1>Hello {user?.name}</h1>
+				<h1>{user?.name}</h1>
 				<Popconfirm
-					title="Delete you account ?"
-					description="Are you sure to delete your account?"
+					title={"Delete your account"}
+					description="Are you sure you want to delete your account ?"
 					onConfirm={confirm}
-					onCancel={cancel}
 					okText="Yes"
 					cancelText="No"
 					className="button-delete"
+					icon={<WarningOutlined style={{ color: 'red' }} />}
+					placement="right"
 				>
 					<Button danger>Delete</Button>
 				</Popconfirm>
 			</div>
-			<h2>Here is your favorites games list</h2>
+			<h2>Your favorites</h2>
 			<div className="top-games-container">
 				{user?.favorites && user?.favorites.length !== 0 ? (
 					user?.favorites.map((game) => (
 						<GameCard key={game?.id} game={game} />
 					))
 				) : (
-					<p>No game add to favorite</p>
+					<h3>You don't have any game in your favorites. Browse our games and add some !</h3>
 				)}
 			</div>
 		</div>
