@@ -1,15 +1,15 @@
-.home-bg {
-	padding: 0 50px;
+.profile-container {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 50px 50px 0 50px;
 }
 
 .title-part {
 	display: flex;
+	width: 100%;
 	flex-direction: row;
 	align-items: center;
-}
-
-.title-part h1 {
-	width: 100%;
+	column-gap: 20px;
 }
 
 .title-part .button-delete {
