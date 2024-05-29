@@ -1,5 +1,8 @@
 .home-bg {
 	padding: 0 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .top-games-container {
