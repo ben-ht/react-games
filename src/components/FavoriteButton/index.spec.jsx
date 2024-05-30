@@ -14,14 +14,13 @@ let isDetailPage = false;
 describe('FavoriteButton', () => {
 	it('It renders', () => {
 		const result = render(
-			<JwtContextProvider>
-				<UserContextProvider>
-					<View game={game} isDetailPage={isDetailPage} />
-				</UserContextProvider>
-			</JwtContextProvider>,
-		);
-		const favButton =
-			result.container.getElementsByClassName('favorite-button');
-		assert(favButton === undefined);
+            <JwtContextProvider>
+                <UserContextProvider>
+                    <View game={game} isDetailPage={isDetailPage}/>
+                </UserContextProvider>
+            </JwtContextProvider>
+        );
+		const favButton = result.container.getElementsByClassName('favorite-button');
+        assert(favButton !== undefined);
 	});
 });

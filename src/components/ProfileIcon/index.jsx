@@ -4,8 +4,8 @@ import './index.css';
 import useJwt from '../../hooks/useJwt';
 import useUser from '../../hooks/useUser';
 
-export default function ProfileIcon(isConnected) {
-	isConnected = false;
+export default function ProfileIcon() {
+	let isConnected = false;
 	const { jwt, setJwt } = useJwt();
 	const { setUser } = useUser();
 	const logout = () => {
@@ -13,14 +13,6 @@ export default function ProfileIcon(isConnected) {
 		setUser();
 		localStorage.removeItem('jwt');
 	};
-	const items = [
-		{
-			key: '1',
-			label: <Link onClick={logout}>Logout</Link>,
-		},
-	];
-
-  const { jwt, setJwt } = useJwt();
 
   if (jwt) {
     isConnected = true;
