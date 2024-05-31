@@ -32,7 +32,7 @@ export default function GameDetails() {
 				await Promise.allSettled(
 					game.involvedCompanies?.ids.map(async (companie) => {
 						const res = await getCompanie(jwt, companie);
-						compArray.push(JSON.parse(res));
+						compArray.push(res);
 					}),
 				);
 				setGameCompanies(compArray);
@@ -69,12 +69,14 @@ export default function GameDetails() {
 						title={'Plateforms avalaible'}
 						dataIndex={'name'}
 						uniqueKey={'id'}
+						isCompanie={false}
 					/>
 					<GameDetailTable
 						data={gameCompanies}
 						title={'Involed companies'}
 						dataIndex={'name'}
 						uniqueKey={'id'}
+						isCompanie={true}
 					/>
 				</div>
 				<hr />

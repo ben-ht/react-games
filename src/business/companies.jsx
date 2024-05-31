@@ -15,5 +15,5 @@ export async function getCompanie(userToken, companieId) {
 		throw new Error(await res.text());
 	}
 
-	return await res.text();
+	return await res.json();
 }

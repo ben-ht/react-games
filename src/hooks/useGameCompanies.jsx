@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import useJwt from './useJwt';
 import { getCompanie } from '../business/companies';
-export default function useGameCompanies({ companieId }) {
+export default function useGameCompanies({ id }) {
 	const [gameCompanies, setGameCompanies] = useState([]);
 	const { jwt } = useJwt();
 	useEffect(() => {
-		if (jwt) {
-			setGameCompanies(getCompanie(jwt, companieId));
+		async function getComp() {
+			if (jwt) {
+				setGameCompanies(await getCompanie(jwt, id));
+			}
 		}
-	}, [companieId, jwt]);
+
+		getComp();
+	}, [id, jwt]);
 	return gameCompanies;
 }
