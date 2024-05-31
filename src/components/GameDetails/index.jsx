@@ -30,8 +30,8 @@ export default function GameDetails() {
 			const compArray = [];
 			if (Array.isArray(game.involvedCompanies?.ids)) {
 				await Promise.allSettled(
-					game.involvedCompanies?.ids.map(async (companie) => {
-						const res = await getCompanie(jwt, companie);
+					game.involvedCompanies?.ids.map(async (company) => {
+						const res = await getCompanie(jwt, company);
 						compArray.push(res);
 					}),
 				);

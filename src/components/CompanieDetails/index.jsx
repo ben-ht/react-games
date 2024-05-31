@@ -46,9 +46,9 @@ export default function CompanieDetails() {
 	return (
 		<>
 			<h1>{gameCompanie.name}</h1>
-			<p>Companie created at : {dateCompanie}</p>
+			<p>company created at : {dateCompanie}</p>
 
-			<h2>Other games by this companie :</h2>
+			<h2>Other games by this company :</h2>
 
 			<div className="top-games-container">
 				{loading ? (
