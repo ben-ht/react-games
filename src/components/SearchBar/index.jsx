@@ -4,19 +4,19 @@ import useTopGames from '../../hooks/useTopGames';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-export default function SearchBar({ setGames, setLoading }) {
+export default function SearchBar({ setGames, setLoading, page }) {
 	const [query, setQuery] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
 
 	const { allGames } = useAllGames({
 		pageSize: 25,
-		page: 1,
+		page: page,
 		term: searchTerm,
 	});
 
 	const topGames = useTopGames({
 		pageSize: 25,
-		page: 1,
+		page: page,
 	});
 
 	useEffect(() => {
@@ -27,7 +27,7 @@ export default function SearchBar({ setGames, setLoading }) {
 			setGames(topGames);
 			setLoading(false);
 		}
-	}, [searchTerm, topGames, allGames]);
+	}, [searchTerm, topGames, allGames, page]);
 
 	async function handleSearch() {
 		setLoading(true);
