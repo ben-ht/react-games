@@ -1,6 +1,6 @@
-export async function getCompanie(userToken, companieId) {
+export async function getCompanie(userToken, companyId) {
 	const res = await fetch(
-		`https://m1.dysnomia.studio/api/Companies/${companieId}`,
+		`https://m1.dysnomia.studio/api/Companies/${companyId}`,
 		{
 			mode: 'cors',
 			method: 'get',
