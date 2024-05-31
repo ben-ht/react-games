@@ -17,6 +17,6 @@ export default function GameRating({ title, rating, ratingCount }) {
 
 GameRating.propTypes = {
 	title: PropTypes.string.isRequired,
-	rating: PropTypes.number.isRequired,
-	ratingCount: PropTypes.number.isRequired,
+	rating: PropTypes.number,
+	ratingCount: PropTypes.number,
 };

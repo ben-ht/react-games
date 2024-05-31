@@ -1,20 +1,19 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../../business/user';
+import { redirect } from 'react-router-dom';
 import useJwt from '../../hooks/useJwt';
 import './index.css';
-import { useNavigate } from 'react-router-dom/dist';
 
 export default function Login() {
 	const [user, setUser] = useState({
 		username: '',
 		password: '',
 	});
-
 	const [button, setButton] = useState(true);
 	const [unauthorized, setUnauthorized] = useState(false);
 
-	const navigate = useNavigate();
+
 	const handleInputChange = (event) => {
 		event.preventDefault();
 		setUnauthorized(false);
@@ -28,6 +27,17 @@ export default function Login() {
 			return newUser;
 		});
 	};
+
+	async function handleSubmit(){
+		try {
+			let newJwt = await loginUser(user);
+			setJwt(newJwt);
+			localStorage.setItem('jwt', newJwt);
+			redirect('/');
+		} catch {
+			setUnauthorized(true);
+		}
+	}
 
 	const disableButton = (user) => {
 		if (user.password !== '' && user.username !== '') {
@@ -43,6 +53,7 @@ export default function Login() {
 		<div className="login-form-bg">
 			<div className="signin">
 				<h2>Sign In</h2>
+				{unauthorized ? <p className='error-text'>User or password is incorrect</p> : null}
 				<div className="form">
 					<div className="input-group">
 						<input
@@ -71,20 +82,10 @@ export default function Login() {
 				<button
 					disabled={button}
 					type="submit"
-					onClick={async () => {
-						let newJwt = await loginUser(user).catch(
-							setUnauthorized(true),
-						);
-						setJwt(newJwt);
-						localStorage.setItem('jwt', jwt);
-						if (newJwt) {
-							navigate('/');
-						}
-					}}
+					onClick={handleSubmit}
 				>
 					Submit
 				</button>
-				{unauthorized ? <p>User or password is incorrect</p> : null}
 			</div>
 		</div>
 	);

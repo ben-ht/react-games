@@ -11,7 +11,6 @@ export default function FavoriteButton({ game, isDetail }) {
 	const [button, setButton] = useState(false);
 	const { jwt } = useJwt();
 	const { user, setUser } = useUser();
-	const [timeOutId, setTimeoutId] = useState();
 
 	useEffect(() => {
 		const favoritesIds = [];
@@ -27,9 +26,6 @@ export default function FavoriteButton({ game, isDetail }) {
 	}, [user, game.id]);
 
 	const handleAddToFavorites = (event) => {
-		if (timeOutId) {
-			clearTimeout(timeOutId);
-		}
 		event.preventDefault();
 		setButton(true);
 		addToFavorites(jwt, game.id);
@@ -39,14 +35,11 @@ export default function FavoriteButton({ game, isDetail }) {
 		event.preventDefault();
 		setButton(false);
 		removeFromFavorites(jwt, game.id);
-		const timeouId = setTimeout(function () {
-			const newList = user.favorites.filter(
-				(favorite) => favorite?.id !== game?.id,
-			);
+		const newList = user.favorites.filter(
+			(favorite) => favorite?.id !== game?.id,
+		);
 
-			setUser({ ...user, favorites: newList });
-		}, 2000);
-		setTimeoutId(timeouId);
+		setUser({ ...user, favorites: newList });
 	};
 
 	if (jwt) {
@@ -77,6 +70,6 @@ export default function FavoriteButton({ game, isDetail }) {
 }
 
 FavoriteButton.propTypes = {
-	game: PropTypes.object.isRequired,
+	game: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
 	isDetail: PropTypes.bool.isRequired,
 };

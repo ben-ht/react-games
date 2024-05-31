@@ -88,7 +88,7 @@ export default function Register() {
 							required
 						/>
 						{isEqual && user.confirmationPassword !== '' ? (
-							<i>Must be the same as password</i>
+							<i>Password must be identical</i>
 						) : (
 							<i>Password confirmation</i>
 						)}
