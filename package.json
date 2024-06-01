@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"test": "vitest run --coverage",
-		"prepare": "npx install husky"
+		"prepare": "npx husky install"
 	},
 	"dependencies": {
 		"@dotlottie/react-player": "^1.6.19",
