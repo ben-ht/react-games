@@ -1,4 +1,4 @@
-export async function postPlatforms(userToken, platforms) {
+export async function getPlatforms(userToken, platforms) {
 	const res = await fetch(`https://m1.dysnomia.studio/api/Games/platforms`, {
 		mode: 'cors',
 		method: 'post',

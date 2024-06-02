@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useJwt from './useJwt';
-import { postPlatforms } from '../business/platforms';
+import { getPlatforms } from '../business/platforms';
+import getAllGameDetails from '../business/gameDetails';
 
 export default function useGameDetails({ id }) {
 	const [gameDetails, setGameDetails] = useState([]);
@@ -11,6 +12,8 @@ export default function useGameDetails({ id }) {
 			const res = await fetch(
 				`https://m1.dysnomia.studio/api/Games/${id}`,
 				{
+					mode: 'cors',
+					method: 'get',
 					headers: {
 						'Content-Type': 'application/json',
 						Authorization: `Bearer ${jwt}`,
@@ -22,11 +25,15 @@ export default function useGameDetails({ id }) {
 				throw new Error(await res.text());
 			}
 
-			const json = await res.json();
-			let pf = await postPlatforms(jwt, json.platforms.ids);
-			json.platformsDetail = pf;
-			setGameDetails(json);
+			const details = await res.json();
+
+			details.platformsDetail = await getPlatforms(
+				jwt,
+				details?.platforms.ids,
+			);
+			setGameDetails(details);
 		}
+
 		if (jwt !== undefined) {
 			getGameDetails();
 		}
