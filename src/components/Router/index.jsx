@@ -10,6 +10,7 @@ import useJwt from '../../hooks/useJwt';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import AllGames from '../AllGames';
+import CompanieDetails from '../CompanieDetails';
 
 const PrivateRoute = ({ element, ...rest }) => {
 	const navigate = useNavigate();
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
 			{
 				path: '/games/:id',
 				element: <PrivateRoute element={<GameDetails />} />,
+			},
+			{
+				path: 'companies/:id',
+				element: <PrivateRoute element={<CompanieDetails />} />,
 			},
 		],
 	},
