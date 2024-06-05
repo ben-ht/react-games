@@ -28,7 +28,7 @@ export default function Profil() {
 			<div className="title-part">
 				<h1>{user?.name}</h1>
 				<Popconfirm
-					title={"Delete your account"}
+					title={'Delete your account'}
 					description="Are you sure you want to delete your account ?"
 					onConfirm={confirm}
 					okText="Yes"
@@ -47,7 +47,10 @@ export default function Profil() {
 						<GameCard key={game?.id} game={game} />
 					))
 				) : (
-					<h3>You don't have any game in your favorites. Browse our games and add some !</h3>
+					<h3>
+						You don't have any game in your favorites. Browse our
+						games and add some !
+					</h3>
 				)}
 			</div>
 		</div>

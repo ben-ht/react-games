@@ -13,7 +13,6 @@ export default function Login() {
 	const [button, setButton] = useState(true);
 	const [unauthorized, setUnauthorized] = useState(false);
 
-
 	const handleInputChange = (event) => {
 		event.preventDefault();
 		setUnauthorized(false);
@@ -28,7 +27,7 @@ export default function Login() {
 		});
 	};
 
-	async function handleSubmit(){
+	async function handleSubmit() {
 		try {
 			let newJwt = await loginUser(user);
 			setJwt(newJwt);
@@ -53,7 +52,9 @@ export default function Login() {
 		<div className="login-form-bg">
 			<div className="signin">
 				<h2>Sign In</h2>
-				{unauthorized ? <p className='error-text'>User or password is incorrect</p> : null}
+				{unauthorized ? (
+					<p className="error-text">User or password is incorrect</p>
+				) : null}
 				<div className="form">
 					<div className="input-group">
 						<input
@@ -79,11 +80,7 @@ export default function Login() {
 				<div className="links">
 					<Link to="/register">Sign Up</Link>
 				</div>
-				<button
-					disabled={button}
-					type="submit"
-					onClick={handleSubmit}
-				>
+				<button disabled={button} type="submit" onClick={handleSubmit}>
 					Submit
 				</button>
 			</div>

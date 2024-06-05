@@ -1,39 +1,39 @@
-import { Dropdown } from "antd";
-import { Link } from "react-router-dom";
-import "./index.css";
+import { Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
+import './index.css';
 
 export default function ProfileIcon(isConnected, setJwt) {
-    const logout = () => {
-        setJwt(undefined);
-        localStorage.removeItem("jwt");
-    };
+	const logout = () => {
+		setJwt(undefined);
+		localStorage.removeItem('jwt');
+	};
 
-    const items = [
-        {
-            key: "1",
-            label: <Link to={"/profile"}>My Profile</Link>,
-        },
-        {
-            key: "2",
-            label: <Link onClick={logout}>Logout</Link>,
-        },
-    ];
+	const items = [
+		{
+			key: '1',
+			label: <Link to={'/profile'}>My Profile</Link>,
+		},
+		{
+			key: '2',
+			label: <Link onClick={logout}>Logout</Link>,
+		},
+	];
 
-    if (isConnected) {
-        return (
-        <Dropdown menu={{ items }} style={{ width: "max-content" }}>
-            <a onClick={(e) => e.preventDefault()}>
-            <div className="profile-icon">
-                <img src="/src/assets/user-icon.svg" />
-            </div>
-            </a>
-        </Dropdown>
-        );
-    }
+	if (isConnected) {
+		return (
+			<Dropdown menu={{ items }} style={{ width: 'max-content' }}>
+				<a onClick={(e) => e.preventDefault()}>
+					<div className="profile-icon">
+						<img src="/src/assets/user-icon.svg" />
+					</div>
+				</a>
+			</Dropdown>
+		);
+	}
 
-    return (
-        <div className={"signin-navbar"}>
-        <Link to={"/login"}>Sign in</Link>
-        </div>
-    );
+	return (
+		<div className={'signin-navbar'}>
+			<Link to={'/login'}>Sign in</Link>
+		</div>
+	);
 }

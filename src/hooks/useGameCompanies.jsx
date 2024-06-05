@@ -1,32 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getCompany } from '../business/companies';
 import useJwt from './useJwt';
-
-export default function useGameCompanies(game) {
-	const [companies, setCompanies] = useState([]);
-
+export default function useGameCompanies({ id }) {
+	const [gameCompanies, setGameCompanies] = useState([]);
 	const { jwt } = useJwt();
-
 	useEffect(() => {
-		if (game === undefined) {
-			return;
-		}
-
-		async function getCompanies() {
-			const companiesList = [];
-			if (Array.isArray(game.involvedCompanies?.ids)) {
-				await Promise.allSettled(
-					game.involvedCompanies?.ids.map(async (company) => {
-						const res = await getCompany(jwt, company);
-						companiesList.push(res);
-					}),
-				);
-				setCompanies(companiesList);
+		async function getComp() {
+			if (jwt) {
+				setGameCompanies(await getCompany(jwt, id));
 			}
 		}
 
-		getCompanies();
-	}, [jwt, game]);
-
-	return companies;
+		getComp();
+	}, [id, jwt]);
+	return gameCompanies;
 }

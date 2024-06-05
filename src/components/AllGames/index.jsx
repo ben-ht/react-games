@@ -12,7 +12,11 @@ export default function AllGames() {
 
 	return (
 		<div className="home-bg">
-			<SearchBar setGames={setGames} setLoading={setLoading} page={page} />
+			<SearchBar
+				setGames={setGames}
+				setLoading={setLoading}
+				page={page}
+			/>
 			<div className="top-games-container">
 				{loading ? (
 					<Loading />
