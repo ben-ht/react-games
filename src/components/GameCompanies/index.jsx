@@ -13,6 +13,5 @@ export default function GameCompanies({ companyId }) {
 		}
 		getComp();
 	}, [companyId, jwt]);
-
 	return gameCompanie;
 }
