@@ -7,7 +7,7 @@ import GameRating from '../GameRating';
 import FavoriteButton from '../FavoriteButton';
 import GameDetailTable from '../GameDetailTable';
 import { useEffect, useState } from 'react';
-import { getCompanie } from '../../business/companies';
+import { getCompany } from '../../business/companies';
 import useJwt from '../../hooks/useJwt';
 
 export default function GameDetails() {
@@ -31,7 +31,7 @@ export default function GameDetails() {
 			if (Array.isArray(game.involvedCompanies?.ids)) {
 				await Promise.allSettled(
 					game.involvedCompanies?.ids.map(async (company) => {
-						const res = await getCompanie(jwt, company);
+						const res = await getCompany(jwt, company);
 						compArray.push(res);
 					}),
 				);
@@ -73,7 +73,7 @@ export default function GameDetails() {
 					/>
 					<GameDetailTable
 						data={gameCompanies}
-						title={'Involed companies'}
+						title={'Involved companies'}
 						dataIndex={'name'}
 						uniqueKey={'id'}
 						isCompanie={true}

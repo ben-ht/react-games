@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCompanie } from '../../business/companies';
+import { getCompany } from '../../business/companies';
 import useJwt from '../../hooks/useJwt';
 
 export default function GameCompanies({ companyId }) {
@@ -7,7 +7,7 @@ export default function GameCompanies({ companyId }) {
 	const { jwt } = useJwt();
 	useEffect(() => {
 		async function getComp() {
-			const compagnie = await getCompanie(jwt, companyId);
+			const compagnie = await getCompany(jwt, companyId);
 
 			setGameCompanie(compagnie);
 		}

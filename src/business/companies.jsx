@@ -1,4 +1,4 @@
-export async function getCompanie(userToken, companyId) {
+export async function getCompany(userToken, companyId) {
 	const res = await fetch(
 		`https://m1.dysnomia.studio/api/Companies/${companyId}`,
 		{
