@@ -4,7 +4,7 @@ import useTopGames from '../../hooks/useTopGames';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-export default function SearchBar({ setGames, setLoading, page }) {
+export default function SearchBar({ setGames, setLoading, page, setPage }) {
 	const [query, setQuery] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
 
@@ -20,7 +20,7 @@ export default function SearchBar({ setGames, setLoading, page }) {
 	});
 
 	useEffect(() => {
-		if (query.length > 0) {
+		if (searchTerm.length > 0) {
 			setGames(allGames);
 			setLoading(false);
 		} else {
@@ -31,6 +31,7 @@ export default function SearchBar({ setGames, setLoading, page }) {
 
 	async function handleSearch() {
 		if (searchTerm !== query) {
+			setPage(1);
 			setLoading(true);
 			setSearchTerm(query);
 		}
@@ -42,12 +43,21 @@ export default function SearchBar({ setGames, setLoading, page }) {
 		}
 	}
 
+	function filterWhiteSpaces(e) {
+		let value = e.target.value;
+		if (value.trim() == '') {
+			e.target.value = '';
+		}
+
+		setQuery(e.target.value);
+	}
+
 	return (
 		<div className="search-bar-container">
 			<input
 				type="text"
 				placeholder="Search for a game..."
-				onInput={(e) => setQuery(e.target.value)}
+				onInput={filterWhiteSpaces}
 				onKeyDown={handleKeyDown}
 			/>
 			<button
