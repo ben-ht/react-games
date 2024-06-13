@@ -4,10 +4,21 @@ import SearchBar from '../SearchBar';
 import Loading from '../Loading';
 import Pagination from '../Pagination';
 
-export default function AllGames({ games, setGames, loading, setLoading, page, setPage }) {
+export default function AllGames({
+	games,
+	setGames,
+	loading,
+	setLoading,
+	page,
+	setPage,
+}) {
 	return (
 		<div className="home-bg">
-			<SearchBar setGames={setGames} setLoading={setLoading} page={page} />
+			<SearchBar
+				setGames={setGames}
+				setLoading={setLoading}
+				page={page}
+			/>
 			<div className="top-games-container">
 				{loading ? (
 					<Loading />
@@ -17,7 +28,7 @@ export default function AllGames({ games, setGames, loading, setLoading, page, s
 					<h2>No games found</h2>
 				)}
 			</div>
-			<Pagination page={page} setPage={setPage} />
+			<Pagination page={page} setPage={setPage} games={games} />
 		</div>
 	);
 }

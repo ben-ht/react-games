@@ -7,12 +7,12 @@ import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import './index.css';
 import PropTypes from 'prop-types';
 
-export default function FavoriteButton({ game, isDetailPage }) {
-    const [button, setButton] = useState(false);
-    const { jwt } = useJwt();
+export default function FavoriteButton({ game, isDetail }) {
+	const [button, setButton] = useState(false);
+	const { jwt } = useJwt();
 	const { user, setUser } = useUser();
 
-    useEffect(() => {
+	useEffect(() => {
 		const favoritesIds = [];
 		const isFav = () => {
 			if (user && user.favorites) {
@@ -46,23 +46,22 @@ export default function FavoriteButton({ game, isDetailPage }) {
 		return (
 			<>
 				{button ? (
-					<Button className='favorite-button'
+					<Button
 						onClick={handleRemoveFromFavorites}
 						icon={<MinusOutlined />}
-						title={isDetailPage ? 'Remove from favorites' : null}
-						size={isDetailPage ? 'large' : 'middle'}
+						title={isDetail ? 'Remove from favorites' : null}
+						size={isDetail ? 'large' : 'middle'}
 					>
-						{isDetailPage ? null : 'Remove from favorites'}
+						{isDetail ? null : 'Remove from favorites'}
 					</Button>
 				) : (
 					<Button
-                        className='favorite-button'
 						onClick={handleAddToFavorites}
 						icon={<PlusOutlined />}
-						title={isDetailPage ? 'Add to favorites' : null}
-						size={isDetailPage ? 'large' : 'middle'}
+						title={isDetail ? 'Add to favorites' : null}
+						size={isDetail ? 'large' : 'middle'}
 					>
-						{isDetailPage ? null : 'Add to favorites'}
+						{isDetail ? null : 'Add to favorites'}
 					</Button>
 				)}
 			</>

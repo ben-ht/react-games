@@ -14,11 +14,5 @@ export default function ProfileIcon() {
 		localStorage.removeItem('jwt');
 	};
 
-  if (jwt) {
-    isConnected = true;
-  }
-
-  return (
-    <View isConnected={[isConnected, setJwt]} />
-  );
+	return <View isConnected={[isConnected, setJwt]} />;
 }
