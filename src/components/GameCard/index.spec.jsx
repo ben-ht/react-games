@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import View from './index';
+import View from './view';
 import { MemoryRouter } from 'react-router-dom';
 
 let game = {
@@ -21,7 +21,7 @@ describe('GameCard', () => {
 		return;
 		render(
 			<MemoryRouter>
-				<View game={game} />
+				<View game={game} loading={false} gameCover={[]} user={null} />
 			</MemoryRouter>,
 		);
 		expect(
