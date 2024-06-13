@@ -6,13 +6,9 @@ import GameCarousel from '../GameCarousel';
 import GameRating from '../GameRating';
 import FavoriteButton from '../FavoriteButton';
 import GameDetailTable from '../GameDetailTable';
-import { useEffect, useState } from 'react';
-import { getCompany } from '../../business/companies';
-import useJwt from '../../hooks/useJwt';
+import useCompanies from '../../hooks/useCompanies';
 
 export default function GameDetails() {
-	const { jwt } = useJwt();
-
 	const id = useParams();
 	const screenshots = useGameScreenshots(id);
 	const game = useGameDetails(id);
@@ -20,26 +16,7 @@ export default function GameDetails() {
 	const aggregatedRating = Number((game.aggregatedRating / 20).toFixed(2));
 	const playerRating = Number((game.rating / 20).toFixed(2));
 
-	const [gameCompanies, setGameCompanies] = useState([]);
-	useEffect(() => {
-		if (!game) {
-			return;
-		}
-
-		async function getData() {
-			const compArray = [];
-			if (Array.isArray(game.involvedCompanies?.ids)) {
-				await Promise.allSettled(
-					game.involvedCompanies?.ids.map(async (company) => {
-						const res = await getCompany(jwt, company);
-						compArray.push(res);
-					}),
-				);
-				setGameCompanies(compArray);
-			}
-		}
-		getData();
-	}, [jwt, game.involvedCompanies, game]);
+	const gameCompanies = useCompanies(game);
 	return (
 		<div className="game-details-bg">
 			<div className="game-details-container">

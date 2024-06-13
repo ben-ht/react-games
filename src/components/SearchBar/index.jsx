@@ -30,8 +30,10 @@ export default function SearchBar({ setGames, setLoading, page }) {
 	}, [searchTerm, topGames, allGames, page]);
 
 	async function handleSearch() {
-		setLoading(true);
-		setSearchTerm(query);
+		if (searchTerm !== query) {
+			setLoading(true);
+			setSearchTerm(query);
+		}
 	}
 
 	function handleKeyDown(e) {
