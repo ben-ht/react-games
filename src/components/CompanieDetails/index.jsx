@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import GameCard from '../GameCard';
 import Loading from '../Loading';
 import getAllGameDetails from '../../business/gameDetails';
+import './index.css';
 
 export default function CompanieDetails() {
 	const id = useParams();
@@ -44,28 +45,31 @@ export default function CompanieDetails() {
 	}, [jwt, gameCompanie]);
 
 	return (
-		<>
-			<h1>{gameCompanie.name}</h1>
-			<p>company created at : {dateCompanie}</p>
-			<p>
-				Description :{' '}
+		<div className="main">
+			<div className="top">
+				<h1>{gameCompanie.name}</h1>
+				<p>Creation date : {dateCompanie}</p>
+			</div>
+			<p className="description">
+				<span>Description :</span>{' '}
 				{gameCompanie?.description
 					? gameCompanie?.description
 					: 'No description'}
 			</p>
-			<h2>Other games by this company :</h2>
-
-			<div className="top-games-container">
-				{loading ? (
-					<Loading />
-				) : gameDeveloped?.length > 0 ? (
-					gameDeveloped?.map((game) => (
-						<GameCard key={game.id} game={game} />
-					))
-				) : (
-					<h2>No games found</h2>
-				)}
+			<div className="games">
+				<h2>Other games by this company :</h2>
+				<div className="top-games-container">
+					{loading ? (
+						<Loading />
+					) : gameDeveloped?.length > 0 ? (
+						gameDeveloped?.map((game) => (
+							<GameCard key={game.id} game={game} />
+						))
+					) : (
+						<h2>No games found</h2>
+					)}
+				</div>
 			</div>
-		</>
+		</div>
 	);
 }
