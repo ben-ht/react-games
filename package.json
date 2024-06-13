@@ -8,8 +8,7 @@
 		"build": "vite build",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
-		"test": "vitest run --coverage",
-		"prepare": "if [ \"$(git rev-parse --abbrev-ref HEAD)\" != \"main\" ]; then npx husky install; fi"
+		"test": "vitest run --coverage"
 	},
 	"dependencies": {
 		"@dotlottie/react-player": "^1.6.19",
