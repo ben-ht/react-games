@@ -2,9 +2,10 @@ import { Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import './index.css';
 
-export default function ProfileIcon(isConnected, setJwt) {
+export default function ProfileIcon({ isConnected, setJwt, setUser }) {
 	const logout = () => {
-		setJwt(undefined);
+		setJwt();
+		setUser();
 		localStorage.removeItem('jwt');
 	};
 
