@@ -16,7 +16,12 @@ export default function Login() {
 	const handleInputChange = (event) => {
 		event.preventDefault();
 		setUnauthorized(false);
-		const { name, value } = event.target;
+		let { name, value } = event.target;
+		if (name === 'username') {
+			if (value.trim() == '') {
+				value = '';
+			}
+		}
 		setUser((user) => {
 			let newUser = {
 				...user,
@@ -46,7 +51,13 @@ export default function Login() {
 		}
 	};
 
-	const { jwt, setJwt } = useJwt();
+	const { setJwt } = useJwt();
+
+	function handleKeyDown(e) {
+		if (e.key === 'Enter') {
+			handleSubmit();
+		}
+	}
 
 	return (
 		<div className="login-form-bg">
@@ -73,6 +84,7 @@ export default function Login() {
 							value={user.password}
 							onChange={handleInputChange}
 							required
+							onKeyDown={handleKeyDown}
 						/>
 						<i>Password</i>
 					</div>
