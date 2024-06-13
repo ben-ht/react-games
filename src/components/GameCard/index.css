@@ -1,0 +1,39 @@
+.ant-card-meta-title {
+	color: var(--primary) !important;
+}
+
+.ant-card-meta-description {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: var(--text) !important;
+}
+
+.ant-card {
+	height: 720px;
+}
+
+.ant-card-cover {
+	height: 530px;
+}
+
+.ant-card-body {
+	display: flex;
+	flex-direction: column;
+	height: 190px;
+}
+
+.ant-card-body button {
+	width: 100%;
+	margin-top: auto;
+}
+
+.ant-card-meta {
+	margin-bottom: 10px !important;
+}
+
+.hidden {
+	display: none;
+}

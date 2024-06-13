@@ -1,0 +1,28 @@
+.profile-container {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 50px 50px 0 50px;
+}
+
+.title-part {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	column-gap: 20px;
+}
+
+.title-part .button-delete {
+	background-color: red;
+	color: white;
+	margin-right: 2%;
+}
+
+.top-games-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	row-gap: 50px;
+	column-gap: 20px;
+}
