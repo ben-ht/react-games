@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { useRef } from 'react';
 
-export default function Pagination({ page, setPage }) {
+export default function Pagination({ page, setPage, games }) {
 	const previousButton = useRef(null);
 
 	const goToPreviousPage = (e) => {
@@ -33,12 +33,18 @@ export default function Pagination({ page, setPage }) {
 				ref={previousButton}
 				size={'large'}
 				onClick={goToPreviousPage}
+				disabled={page === 1}
 			>
 				<LeftOutlined />
 				Go to previous
 			</Button>
 			<div className="page-number">{page}</div>
-			<Button id="next-page" size={'large'} onClick={goToNextPage}>
+			<Button
+				id="next-page"
+				size={'large'}
+				onClick={goToNextPage}
+				disabled={games.length < 25}
+			>
 				Go to next
 				<RightOutlined />
 			</Button>

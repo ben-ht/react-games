@@ -16,6 +16,7 @@ export default function AllGames() {
 				setGames={setGames}
 				setLoading={setLoading}
 				page={page}
+				setPage={setPage}
 			/>
 			<div className="top-games-container">
 				{loading ? (
@@ -26,7 +27,7 @@ export default function AllGames() {
 					<h2>No games found</h2>
 				)}
 			</div>
-			<Pagination page={page} setPage={setPage} />
+			<Pagination page={page} setPage={setPage} games={games} />
 		</div>
 	);
 }
