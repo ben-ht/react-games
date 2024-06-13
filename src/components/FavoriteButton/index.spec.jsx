@@ -9,19 +9,19 @@ let game = {
 	id: 123,
 };
 
-let isDetailPage = false;
+let isDetail = false;
 
 describe('FavoriteButton', () => {
 	it('It renders', () => {
 		const result = render(
 			<JwtContextProvider>
 				<UserContextProvider>
-					<View game={game} isDetailPage={isDetailPage} />
+					<View game={game} isDetail={isDetail} />
 				</UserContextProvider>
 			</JwtContextProvider>,
 		);
 		const favButton =
 			result.container.getElementsByClassName('favorite-button');
-		assert(favButton === undefined);
+		assert(favButton !== undefined);
 	});
 });

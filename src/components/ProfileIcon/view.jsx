@@ -2,19 +2,16 @@ import { Dropdown } from 'antd';
 import { Link } from 'react-router-dom';
 import './index.css';
 
-export default function ProfileIcon(isConnected, setJwt) {
+export default function ProfileIcon({ isConnected, setJwt, setUser }) {
 	const logout = () => {
-		setJwt(undefined);
+		setJwt();
+		setUser();
 		localStorage.removeItem('jwt');
 	};
 
 	const items = [
 		{
 			key: '1',
-			label: <Link to={'/profile'}>My Profile</Link>,
-		},
-		{
-			key: '2',
 			label: <Link onClick={logout}>Logout</Link>,
 		},
 	];

@@ -2,10 +2,11 @@ import './index.css';
 import GameCarousel from '../GameCarousel';
 import GameRating from '../GameRating';
 import FavoriteButton from '../FavoriteButton';
+import GameDetailTable from '../GameDetailTable';
 
-export default function GameDetails({ game, screenshots }) {
-	const aggregatedRating = (game.aggregatedRating / 20).toFixed(2);
-	const playerRating = (game.rating / 20).toFixed(2);
+export default function GameDetails({ game, screenshots, gameCompanies }) {
+	const aggregatedRating = Number((game.aggregatedRating / 20).toFixed(2));
+	const playerRating = Number((game.rating / 20).toFixed(2));
 
 	return (
 		<div className="game-details-bg">
@@ -27,6 +28,23 @@ export default function GameDetails({ game, screenshots }) {
 						title="Players Rating"
 						rating={playerRating}
 						ratingCount={game.ratingCount}
+					/>
+				</div>
+				<br />
+				<div className="game-ratings">
+					<GameDetailTable
+						data={game?.platformsDetail}
+						title={'Plateforms avalaible'}
+						dataIndex={'name'}
+						uniqueKey={'id'}
+						isCompanie={false}
+					/>
+					<GameDetailTable
+						data={gameCompanies}
+						title={'Involved companies'}
+						dataIndex={'name'}
+						uniqueKey={'id'}
+						isCompanie={true}
 					/>
 				</div>
 				<hr />

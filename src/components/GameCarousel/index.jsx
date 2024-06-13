@@ -17,7 +17,7 @@ export default function GameCarousel({ screenshots }) {
 						key={screenshot.id}
 						className="game-screenshot-container"
 					>
-						<img src={screenshot.url} alt="In-game screenshot" />
+						<img id={screenshot.id} src={screenshot.url} alt="In-game screenshot" />
 					</div>
 				))}
 			</Carousel>
@@ -32,7 +32,7 @@ export default function GameCarousel({ screenshots }) {
 							slider.current.goTo(i);
 						}}
 					>
-						<img src={screenshot.url} alt="In-game screenshot" />
+						<img id={screenshot.id} src={screenshot.url} alt="In-game screenshot" />
 					</div>
 				))}
 			</div>

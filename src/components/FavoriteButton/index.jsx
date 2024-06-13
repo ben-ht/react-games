@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import useUser from '../../hooks/useUser';
+import useJwt from '../../hooks/useJwt';
+import { useEffect, useState } from 'react';
 import { removeFromFavorites, addToFavorites } from '../../business/favorites';
 import { Button } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
-import useJwt from '../../hooks/useJwt';
 import './index.css';
 import PropTypes from 'prop-types';
 
