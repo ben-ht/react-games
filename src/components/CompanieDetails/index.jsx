@@ -47,7 +47,12 @@ export default function CompanieDetails() {
 		<>
 			<h1>{gameCompanie.name}</h1>
 			<p>company created at : {dateCompanie}</p>
-
+			<p>
+				Description :{' '}
+				{gameCompanie?.description
+					? gameCompanie?.description
+					: 'No description'}
+			</p>
 			<h2>Other games by this company :</h2>
 
 			<div className="top-games-container">
