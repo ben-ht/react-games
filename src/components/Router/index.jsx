@@ -43,10 +43,6 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/games',
-				element: <AllGames />,
-			},
-			{
 				path: '/login',
 				element: <LoggedRoute element={<Login />} />,
 			},
@@ -65,6 +61,10 @@ const router = createBrowserRouter([
 			{
 				path: 'companies/:id',
 				element: <PrivateRoute element={<CompanieDetails />} />,
+			},
+			{
+				path: '/games',
+				element: <PrivateRoute element={<AllGames />} />,
 			},
 		],
 	},

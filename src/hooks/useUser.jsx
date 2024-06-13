@@ -21,7 +21,7 @@ export default function useUser() {
 			const response = await res.json();
 			setUser(response);
 		}
-		if (jwt !== undefined) {
+		if (jwt) {
 			getUser(jwt);
 		}
 	}, [jwt, setUser]);
